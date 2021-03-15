@@ -139,7 +139,7 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    const { item, books, searchBooks } = this.state;
+    const {  books, searchBooks } = this.state;
     return (
       <BrowserRouter>
         <div className="app">
@@ -154,7 +154,6 @@ class BooksApp extends React.Component {
               onSearchChange={this.onSearchChange.bind(this)}
               onSelectChange={this.onSelectChange.bind(this)}
               searchBooks={searchBooks}
-              item={item}
             />
           </Route>
         </div>

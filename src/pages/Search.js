@@ -7,7 +7,7 @@ import './Search.css';
 
 class Search extends Component {
   render() {
-    const { onSelectChange, onSearchChange, item, searchBooks } = this.props;
+    const { onSelectChange, onSearchChange, searchBooks } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -61,7 +61,6 @@ class Search extends Component {
 PropTypes.Search = {
   onSelectChange: PropTypes.func,
   onSearchChange: PropTypes.func,
-  item: PropTypes.string,
   searchBooks: PropTypes.array,
 };
 export default Search;
