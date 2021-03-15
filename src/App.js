@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Search from './pages/Search';
-import { getAll, get, search } from './BooksAPI';
+import { getAll, get, search, update } from './BooksAPI';
 import { SHELVE_TITLE } from './helper';
 
 class BooksApp extends React.Component {
@@ -78,7 +78,12 @@ class BooksApp extends React.Component {
     const { books, searchBooks, ...rest } = this.state;
 
     const book = books.find((book) => book.id === bookId);
+
     if (book) {
+      update(book, value)
+        .then((data) => console.log('update: ', data))
+        .catch((err) => console.log(err.message));
+
       const updatedBooks = books.map((book) => {
         if (book.id === bookId) {
           book.selectedShelve = value;
@@ -104,6 +109,9 @@ class BooksApp extends React.Component {
     } else {
       get(bookId)
         .then((book) => {
+          update(book, value)
+            .then((data) => console.log('update: ', data))
+            .catch((err) => console.log(err.message));
           const {
             id,
             title,
@@ -139,7 +147,7 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    const {  books, searchBooks } = this.state;
+    const { books, searchBooks } = this.state;
     return (
       <BrowserRouter>
         <div className="app">
